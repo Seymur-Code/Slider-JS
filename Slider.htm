@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Slider</title>
+        <style>
+            #slider {
+                width: 80%;
+                height: 80vh;
+                margin: 10vh auto 0;
+                box-shadow: 0 0 10px #333;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            button {
+                border: 1px solid #FFF;
+                border-radius: 50%;
+                font: 2.4em/1 Arial;
+                color: #fff;
+                padding: 10px;
+                background: #ffffff4d;
+                cursor: pointer;
+            }
+            button:hover {
+                background: #ffffff99;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="slider">
+            <button onclick="change(-1)">⏴</button>
+            <button onclick="change(1)">⏵</button>
+        </div>
+
+        <script>
+            const slider = document.getElementById("slider")
+            let x = 1
+            let timer = setTimeout(change, 3000, 1)
+            change(0)
+            
+            function change(dx) {
+                clearTimeout(timer)
+                x += dx
+                if (x > 5) x = 1
+                if (x < 1) x = 5
+                slider.style.background = `url('img/img${x}.jpg') center/cover`
+                timer = setTimeout(change, 3000, 1)
+            }
+        </script>
+    </body>
+</html>
